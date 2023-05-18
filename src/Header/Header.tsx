@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
-
+import './Header.scss'
 const Header = () => {
     return (
-      <div>
-        <h1>
-            Header
-        </h1>
-         <ul>
-        <li>
-            <a href="/">Home</a>    
+      <div>   
+<ul>
+  
+<li>
+            <Link to='/' > home </Link>
         </li>
         <li>
-            <a href="/main">Main</a>    
+           <Link to='/show'> Main </Link>   
         </li>
-       </ul> 
+
+</ul>
+      
       </div>
     )
 };

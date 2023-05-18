@@ -1,10 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import HealthDataContext from "../../context/health-data-context";
+import { useParams } from "react-router-dom";
+import { initalState } from "../../store/reducer-store";
+import { stateType } from "../../store/store-types";
 
 const ViewHealthData = () => {
-    const { userData } = useContext(HealthDataContext);
-    console.log('userData',userData)
+    const { users } = useContext(HealthDataContext);
+
+    const params:any = useParams();
+    console.log('userData',users)
     
+    
+    const [ userData, setUserData ] = useState<stateType>(initalState[0]);
+    
+    useEffect(() => {
+        if(params.userId){
+            users.forEach(user=> {
+                if(user.id == parseInt(params.userId)){
+                 setUserData(user)
+                }
+             })
+        }
+        console.log('userData',userData)
+    },[params])
+
     const [BPresult, setBPResult] = useState('');
     
     const checkBP = () => {
