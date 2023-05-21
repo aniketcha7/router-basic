@@ -1,21 +1,37 @@
-import { Link } from 'react-router-dom';
-import './Header.scss'
+import { Link, NavLink } from "react-router-dom";
+import "./Header.scss";
 const Header = () => {
-    return (
-      <div>   
-<ul>
-  
-<li>
-            <Link to='/' > home </Link>
-        </li>
-        <li>
-           <Link to='/show'> Main </Link>   
-        </li>
+  const navArr = [
+    {
+      path: "",
+      name: "home",
+    },
+    {
+      path: "/show",
+      name: "All User",
+    },
+  ];
 
-</ul>
-      
-      </div>
-    )
+  const allLinks = navArr.map((linkObj: any) => {
+    return (
+      <li id="test">
+        <NavLink
+          className={({isActive}) => {return isActive ? 'active-class': ''}}
+          to={linkObj.path}
+        >
+         
+          {linkObj.name}
+        </NavLink>
+      </li>
+    );
+  });
+  return (
+    <div>
+      <ul>
+    {allLinks}
+      </ul>
+    </div>
+  );
 };
 
 export default Header;
